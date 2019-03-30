@@ -13,16 +13,31 @@ ui <- fluidPage(
 	),
 	actionButton(
 		inputId = "clicks",
-		label = "click me"
+		label = "trigger server side event"
 	),
+	actionButton(
+		inputId = "go",
+		label = "Update"
+	),
+	actionButton(
+		inputId = "uniform",
+		label = "Uniform"
+	),
+	plotOutput("plot"),
 	plotOutput("hist"),
 	verbatimTextOutput("stats")
 )
 
 server <- function(input, output) {
-	data <- reactive({
+	# data <- reactive({
+	# 	rnorm(input$num)
+	# })
+
+	data <- eventReactive(input$go,{
 		rnorm(input$num)
 	})
+
+	rv <- reactiveValues(data = rnorm(100))
 
 	output$hist <- renderPlot({
 	 	hist(data(), main = isolate(input$title))
@@ -32,8 +47,13 @@ server <- function(input, output) {
 	 	summary(data())
 	})
 
+	output$plot <- renderPlot({
+	 	plot(rv$data)
+	})
+
 	# Same as observe({print(as.numeric(input$clicks)})
 	observeEvent(input$clicks, print(as.numeric(input$clicks)))
+	observeEvent(input$uniform, {rv$data <- runif(100)})
 }
 
 shinyApp(ui = ui, server = server)
