@@ -1,0 +1,21 @@
+{
+  "name": "landscapes_01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "csv-parser": "^2.2.0",
+    "dateformat": "^3.0.3",
+    "emoji-strip": "^1.0.1",
+    "mysql": "^2.16.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
