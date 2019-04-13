@@ -1,3 +1,10 @@
+# For R-IDE in Sublime Text
+# install.packages("languageserver")
+# install.packages("shiny")
+# install.packages("tidytext")
+# install.packages("tidyverse")
+# install.packages("RMySQL")
+
 library(shiny)
 library(DBI)
 library(tidytext)
@@ -8,7 +15,7 @@ con <- dbConnect(RMySQL::MySQL(),
                  host = "mutualcollective.crjhyx0oh3pw.us-east-2.rds.amazonaws.com",
                  port = 3306,
                  user = "mutualcollective",
-                 password = "Yfu5FubfhQRc")
+                 password = "3YS7e(At$dD;")
 
 # dbListTables(con)
 custom_stop_words <- tibble("word" = c("t.co", 
@@ -42,7 +49,7 @@ sorted <- topic_engagement %>%
 mutate(word = reorder(word, x))
 head(sorted, 50)
 
-ui <- htmlTemplate("/Users/johnmalcolm/dev/landscapes_01/template.html",
+ui <- htmlTemplate("/Users/johnmalcolm/dev/landscapes_01/www/template.html",
 	plot = plotOutput("dist"),
 	slider = sliderInput("num", "Number of results", 1, 50, 25)
 )
