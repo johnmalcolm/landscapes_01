@@ -1,6 +1,4 @@
-READ ME 
-
-# Enviroment Tech
+# Development Enviroment
 - R Studio
 - Sublime Text
 - R-IDE: Make Sublime Text a perfect IDE for R
